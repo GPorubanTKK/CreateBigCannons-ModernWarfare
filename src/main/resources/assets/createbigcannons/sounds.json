@@ -1,0 +1,25 @@
+{
+  "mw2nuke_warn": {
+    "category": "master",
+    "sounds": [{
+      "name": "createbigcannons:mw2nuke_warn",
+      "stream": true
+    }]
+  },
+
+  "mw2nuke_explode": {
+    "category": "master",
+    "sounds": [{
+      "name": "createbigcannons:mw2nuke_explode",
+      "stream": true
+    }]
+  },
+
+  "smoke_shell_hiss": {
+    "category": "master",
+    "sounds": [{
+      "name": "createbigcannons:smoke_shell_hiss",
+      "stream": true
+    }]
+  }
+}

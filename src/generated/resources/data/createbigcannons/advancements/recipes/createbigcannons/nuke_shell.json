@@ -1,0 +1,23 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "createbigcannons:nuke_shell"
+    ]
+  },
+  "criteria": {
+    "has_dragon_egg": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "items": [
+            "minecraft:dragon_egg"
+          ]
+        }]
+      }
+    }
+  },
+  "requirements": [[
+    "has_dragon_egg"
+  ]]
+}

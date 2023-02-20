@@ -67,7 +67,18 @@ public class CBCLangGen {
 		.conditionAndBehavior("On Detonation", "Releases its contents.")
 		.conditionAndBehavior("Filling", "The shell can only be filled through _the same face that the fuze is placed on._ If a fuze is present, the shell _cannot be filled._")
 		.conditionAndBehavior("Note", "Some fluids may not have any effect on release. Supported fluids include, but may not be limited to, _water, lava, and liquid potions._");
-		
+
+		tooltip(CBCBlocks.NUKE)
+				.header("NUCLEAR EXPLOSIVE SHELL")
+				.summary("A reference to the first Return Of The Living Dead movie and MW2");
+
+		tooltip(CBCBlocks.SMOKE)
+				.header("SMOKE BOMB SHELL")
+				.summary("A tactical smoke grenade that does no damage.  Hope you brought your thermal scope <3")
+				.conditionAndBehavior("On Detonation", "Creates a cloud of smoke that obscures vision");
+
+
+
 		tooltip(CBCItems.IMPACT_FUZE)
 		.header("IMPACT FUZE")
 		.summary("Detonates when the projectile _hits something_. Due to its _simplicity_, it does not always detonate on impact.")

@@ -34,7 +34,6 @@ public class CBCDatagen {
 		}
 		if (event.includeClient()) {
 			CBCLangGen.prepare();
-
 			gen.addProvider(new CBCBlockPartialsGen(gen, helper));
 			
 			CBCPonderTags.register();

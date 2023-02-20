@@ -1,0 +1,8 @@
+{
+  "parent": "createbigcannons:block/standard_projectile_block",
+  "textures": {
+    "side": "createbigcannons:block/projectile/smoke_shell",
+    "top": "createbigcannons:block/projectile/smoke_shell_top",
+    "particle": "createbigcannons:block/projectile/smoke_shell_top"
+  }
+}

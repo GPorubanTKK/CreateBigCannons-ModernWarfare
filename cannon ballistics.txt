@@ -1,0 +1,3 @@
+1 charge -> 14 blocks horizontal range WHEN elevation = 0 deg AND fulcrum is on the chamber closest to the barrel
+1 charge -> 14 blocks horizontal range WHEN elevation = 0 deg AND fulcrum is on the chamber closest to the breach
+**barrel length dont matter in terms of range

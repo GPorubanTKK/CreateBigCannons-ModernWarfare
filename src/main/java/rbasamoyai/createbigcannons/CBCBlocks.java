@@ -51,14 +51,18 @@ import rbasamoyai.createbigcannons.datagen.assets.CBCBuilderTransformers;
 import rbasamoyai.createbigcannons.munitions.big_cannon.PowderChargeBlock;
 import rbasamoyai.createbigcannons.munitions.big_cannon.ap_shell.APShellBlock;
 import rbasamoyai.createbigcannons.munitions.big_cannon.ap_shot.APShotBlock;
+import rbasamoyai.createbigcannons.munitions.big_cannon.chlorine.GasBlock;
 import rbasamoyai.createbigcannons.munitions.big_cannon.fluid_shell.FluidShellBlock;
 import rbasamoyai.createbigcannons.munitions.big_cannon.grapeshot.GrapeshotBlock;
 import rbasamoyai.createbigcannons.munitions.big_cannon.he_shell.HEShellBlock;
 import rbasamoyai.createbigcannons.munitions.big_cannon.mortar_stone.MortarStoneBlock;
 import rbasamoyai.createbigcannons.munitions.big_cannon.mortar_stone.MortarStoneItem;
+import rbasamoyai.createbigcannons.munitions.big_cannon.nuke.NukeBlock;
+import rbasamoyai.createbigcannons.munitions.big_cannon.smoke.SmokeShellBlock;
 import rbasamoyai.createbigcannons.munitions.big_cannon.solid_shot.SolidShotBlock;
 import rbasamoyai.createbigcannons.munitions.big_cannon.shrapnel.ShrapnelShellBlock;
 import rbasamoyai.createbigcannons.munitions.big_cannon.traffic_cone.TrafficConeBlock;
+import rbasamoyai.createbigcannons.munitions.big_cannon.white_phosphorous.WPBlock;
 
 import static rbasamoyai.createbigcannons.CreateBigCannons.REGISTRATE;
 
@@ -889,6 +893,39 @@ public class CBCBlocks {
 			.transform(CBCBuilderTransformers.projectile("projectile/he_shell"))
 			.loot(CBCBuilderTransformers.shellLoot())
 			.lang("High Explosive (HE) Shell")
+			.simpleItem()
+			.register();
+
+	public static final BlockEntry<NukeBlock> NUKE = REGISTRATE
+			.block("nuke_shell", NukeBlock::new)
+			.initialProperties(Material.METAL)
+			.properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
+			.transform(axeOrPickaxe())
+			.loot(CBCBuilderTransformers.shellLoot())
+			.simpleItem()
+			.register();
+	public static final BlockEntry<SmokeShellBlock> SMOKE = REGISTRATE
+			.block("smoke_shell", SmokeShellBlock::new)
+			.initialProperties(Material.WOOD)
+			.properties(p -> p.sound(SoundType.WOOL))
+			.transform(axeOrPickaxe())
+			.loot(CBCBuilderTransformers.shellLoot())
+			.simpleItem()
+			.register();
+	public static final BlockEntry<WPBlock> WHITE_PHOSPHOROUS = REGISTRATE
+			.block("incendiary_shell", WPBlock::new)
+			.initialProperties(Material.METAL)
+			.properties(p -> p.sound(SoundType.DEEPSLATE))
+			.transform(axeOrPickaxe())
+			.loot(CBCBuilderTransformers.shellLoot())
+			.simpleItem()
+			.register();
+	public static final BlockEntry<GasBlock> GENEVA_SUGGESTION = REGISTRATE
+			.block("gas_shell",GasBlock::new)
+			.initialProperties(Material.METAL)
+			.properties(p -> p.sound(SoundType.COPPER))
+			.transform(axeOrPickaxe())
+			.loot(CBCBuilderTransformers.shellLoot())
 			.simpleItem()
 			.register();
 	
