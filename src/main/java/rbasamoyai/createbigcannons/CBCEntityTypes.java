@@ -11,7 +11,9 @@ import rbasamoyai.createbigcannons.cannon_control.contraption.PitchOrientedContr
 import rbasamoyai.createbigcannons.cannon_control.carriage.CannonCarriageEntity;
 import rbasamoyai.createbigcannons.cannon_control.carriage.CannonCarriageRenderer;
 import rbasamoyai.createbigcannons.munitions.AbstractCannonProjectile;
+import rbasamoyai.createbigcannons.munitions.autocannon.fmj.FMJAutocannonProjectile;
 import rbasamoyai.createbigcannons.munitions.autocannon.hollowpt.HPAutocannonProjectile;
+import rbasamoyai.createbigcannons.munitions.autocannon.incendiary.IncendiaryAutocannonProjectile;
 import rbasamoyai.createbigcannons.munitions.autocannon.subsonic.SubsonicAutocannonProjectile;
 import rbasamoyai.createbigcannons.munitions.autocannon.tracer.TracerAutocannonProjectile;
 import rbasamoyai.createbigcannons.munitions.big_cannon.AbstractBigCannonProjectile;
@@ -95,7 +97,8 @@ public class CBCEntityTypes {
 	public static final EntityEntry<TracerAutocannonProjectile> TRACER_AUTOCANNON = autocannonProjectile("tracer_autocannon_projectile", TracerAutocannonProjectile::new);
 	public static final EntityEntry<SubsonicAutocannonProjectile> SUBSONIC_AUTOCANNON = autocannonProjectile("subsonic_autocannon_projectile", SubsonicAutocannonProjectile::new);
 	public static final EntityEntry<HPAutocannonProjectile> HP_AUTOCANNON = autocannonProjectile("hp_autocannon_projectile", HPAutocannonProjectile::new);
-
+	public static final EntityEntry<IncendiaryAutocannonProjectile> INCENDIARY_AUTOCANNON = autocannonProjectile("incendiary_autocannon_projectile", IncendiaryAutocannonProjectile::new);
+	public static final EntityEntry<FMJAutocannonProjectile> FMJ_AUTOCANNON = autocannonProjectile("fmj_autocannon_projectile", FMJAutocannonProjectile::new);
     private static <T extends AbstractBigCannonProjectile> EntityEntry<T> cannonProjectile(String id, EntityFactory<T> factory) {
 		return REGISTRATE
 				.entity(id, factory, MobCategory.MISC)

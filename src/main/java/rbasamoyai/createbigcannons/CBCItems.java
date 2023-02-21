@@ -8,13 +8,14 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import rbasamoyai.createbigcannons.crafting.CannonCraftingWandItem;
 import rbasamoyai.createbigcannons.datagen.assets.CBCBuilderTransformers;
-import rbasamoyai.createbigcannons.guns.Kalishnakov;
 import rbasamoyai.createbigcannons.manualloading.RamRodItem;
 import rbasamoyai.createbigcannons.manualloading.WormItem;
 import rbasamoyai.createbigcannons.munitions.autocannon.AutocannonCartridgeItem;
 import rbasamoyai.createbigcannons.munitions.autocannon.ap_round.APAutocannonRoundItem;
 import rbasamoyai.createbigcannons.munitions.autocannon.flak.FlakAutocannonRoundItem;
+import rbasamoyai.createbigcannons.munitions.autocannon.fmj.FMJAutocannonRoundItem;
 import rbasamoyai.createbigcannons.munitions.autocannon.hollowpt.HPAutocannonRoundItem;
+import rbasamoyai.createbigcannons.munitions.autocannon.incendiary.IncendiaryAutocannonRoundItem;
 import rbasamoyai.createbigcannons.munitions.autocannon.subsonic.SubsonicAutocannonRoundItem;
 import rbasamoyai.createbigcannons.munitions.autocannon.tracer.TracerAutocannonRoundItem;
 import rbasamoyai.createbigcannons.munitions.config.InspectResistanceToolItem;
@@ -157,9 +158,12 @@ public class CBCItems {
 			.lang("Hollow-Point Autocannon Round")
 			.register();
 
-	public static final ItemEntry<Kalishnakov> AK = REGISTRATE
-			.item("kalishnakov", Kalishnakov::new)
-			.model((c, p) -> p.getExistingFile(c.getId()))
+	public static final ItemEntry<IncendiaryAutocannonRoundItem> INCENDIARY_ROUND = REGISTRATE
+			.item("incendiary_autocannon_round", IncendiaryAutocannonRoundItem::new)
+			.register();
+
+	public static final ItemEntry<FMJAutocannonRoundItem> FMJ_ROUND = REGISTRATE
+			.item("fmj_autocannon_round", FMJAutocannonRoundItem::new)
 			.register();
 
 	public static final ItemEntry<RamRodItem> RAM_ROD = REGISTRATE

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "C",
+    "B",
+    "I"
+  ],
+  "key": {
+    "C": {
+      "tag": "forge:ingots/cast_iron"
+    },
+    "B": {
+      "item": "minecraft:blaze_powder"
+    },
+    "I": {
+      "tag": "forge:ingots/iron"
+    }
+  },
+  "result": {
+    "item": "cretaebigcannons:incendiary_autocannon_round",
+    "count": 4
+  }
+}

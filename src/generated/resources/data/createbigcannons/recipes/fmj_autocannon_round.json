@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "N",
+    "I"
+  ],
+  "key": {
+    "N": {
+      "tag": "forge/nuggets/iron"
+    },
+    "I": {
+      "tag": "forge:ingots/iron"
+    }
+  },
+  "result": {
+    "item": "createbigcannons:fmj_autocannon_round",
+    "count": 3
+  }
+}

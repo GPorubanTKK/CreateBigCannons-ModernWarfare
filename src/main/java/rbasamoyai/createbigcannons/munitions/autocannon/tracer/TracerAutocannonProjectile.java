@@ -11,7 +11,8 @@ public class TracerAutocannonProjectile extends AbstractAutocannonProjectile {
         super(type, level);
         setProjectileMass(10);
         setTracer(true);
-        damage = 11;
+        setGlowingTag(true);
+        damage -= 3;
     }
 
     @Override

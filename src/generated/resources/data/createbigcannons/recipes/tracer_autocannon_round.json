@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "C",
+    "G",
+    "I"
+  ],
+  "key": {
+    "C": {
+      "tag": "forge:ingots/cast_iron"
+    },
+    "G": {
+      "item": "minecraft:glowstone_dust"
+    },
+    "I": {
+      "tag": "forge:ingots/iron"
+    }
+  },
+  "result": {
+    "item": "createbigcannons:tracer_autocannon_round",
+    "count": 4
+  }
+}

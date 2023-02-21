@@ -175,9 +175,11 @@ public class ModGroup {
 				CBCItems.FLAK_AUTOCANNON_ROUND.get().getCreativeTabCartridgeItem(),
 				CBCItems.FLAK_AUTOCANNON_ROUND.asStack(),
 				CBCItems.TRACER_AUTOCANNON_ROUND.asStack(),
+				CBCItems.TRACER_AUTOCANNON_ROUND.get().getCreativeTabCartridgeItem(),
 				CBCItems.SUBSONIC_AUTOCANNON_ROUND.asStack(),
+				CBCItems.SUBSONIC_AUTOCANNON_ROUND.get().getCreativeTabCartridgeItem(),
 				CBCItems.HP_AUTOCANNON_ROUND.asStack(),
-				CBCItems.AK.asStack(1),
+				CBCItems.HP_AUTOCANNON_ROUND.get().getCreativeTabCartridgeItem(),
 
 				CBCItems.RECOIL_SPRING.asStack(),
 

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " I ",
+    "NWN"
+  ],
+  "key": {
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "N": {
+      "tag": "forge:nuggets/iron"
+    },
+    "W": {
+      "tag": "forge:wool"
+    }
+  },
+  "result": {
+    "item": "createbigcannons:subsonic_autocannon_round",
+    "count": 3
+  }
+}

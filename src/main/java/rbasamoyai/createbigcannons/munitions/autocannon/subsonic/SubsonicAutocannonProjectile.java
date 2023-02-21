@@ -9,6 +9,6 @@ public class SubsonicAutocannonProjectile extends AbstractAutocannonProjectile {
     public SubsonicAutocannonProjectile(EntityType<? extends SubsonicAutocannonProjectile> type, Level level) {
         super(type, level);
         setProjectileMass(9);
-        damage = 12;
+        damage -= 5;
     }
 }

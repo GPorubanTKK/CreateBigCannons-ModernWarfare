@@ -16,7 +16,7 @@ public class HPAutocannonProjectile extends AbstractAutocannonProjectile {
     public HPAutocannonProjectile(EntityType<? extends HPAutocannonProjectile> type, Level level) {
         super(type, level);
         setProjectileMass(12);
-        damage = 20;
+        damage += 6;
     }
     @Override public void onHitBlock(@NotNull BlockHitResult result) {}
     @Override public void onDestroyBlock(BlockState state, BlockHitResult bhr){}
