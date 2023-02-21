@@ -8,11 +8,15 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import rbasamoyai.createbigcannons.crafting.CannonCraftingWandItem;
 import rbasamoyai.createbigcannons.datagen.assets.CBCBuilderTransformers;
+import rbasamoyai.createbigcannons.guns.Kalishnakov;
 import rbasamoyai.createbigcannons.manualloading.RamRodItem;
 import rbasamoyai.createbigcannons.manualloading.WormItem;
 import rbasamoyai.createbigcannons.munitions.autocannon.AutocannonCartridgeItem;
 import rbasamoyai.createbigcannons.munitions.autocannon.ap_round.APAutocannonRoundItem;
 import rbasamoyai.createbigcannons.munitions.autocannon.flak.FlakAutocannonRoundItem;
+import rbasamoyai.createbigcannons.munitions.autocannon.hollowpt.HPAutocannonRoundItem;
+import rbasamoyai.createbigcannons.munitions.autocannon.subsonic.SubsonicAutocannonRoundItem;
+import rbasamoyai.createbigcannons.munitions.autocannon.tracer.TracerAutocannonRoundItem;
 import rbasamoyai.createbigcannons.munitions.config.InspectResistanceToolItem;
 import rbasamoyai.createbigcannons.munitions.fuzes.ImpactFuzeItem;
 import rbasamoyai.createbigcannons.munitions.fuzes.ProximityFuzeItem;
@@ -136,6 +140,26 @@ public class CBCItems {
 
 	public static final ItemEntry<FlakAutocannonRoundItem> FLAK_AUTOCANNON_ROUND = REGISTRATE
 			.item("flak_autocannon_round", FlakAutocannonRoundItem::new)
+			.register();
+
+	public static final ItemEntry<TracerAutocannonRoundItem> TRACER_AUTOCANNON_ROUND = REGISTRATE
+			.item("tracer_autocannon_round", TracerAutocannonRoundItem::new)
+			.lang("Tracer Autocannon Round")
+			.register();
+
+	public static final ItemEntry<SubsonicAutocannonRoundItem> SUBSONIC_AUTOCANNON_ROUND = REGISTRATE
+			.item("subsonic_autocannon_round", SubsonicAutocannonRoundItem::new)
+			.lang("Subsonic Autocannon Round")
+			.register();
+
+	public static final ItemEntry<HPAutocannonRoundItem> HP_AUTOCANNON_ROUND = REGISTRATE
+			.item("hp_autocannon_round", HPAutocannonRoundItem::new)
+			.lang("Hollow-Point Autocannon Round")
+			.register();
+
+	public static final ItemEntry<Kalishnakov> AK = REGISTRATE
+			.item("kalishnakov", Kalishnakov::new)
+			.model((c, p) -> p.getExistingFile(c.getId()))
 			.register();
 
 	public static final ItemEntry<RamRodItem> RAM_ROD = REGISTRATE

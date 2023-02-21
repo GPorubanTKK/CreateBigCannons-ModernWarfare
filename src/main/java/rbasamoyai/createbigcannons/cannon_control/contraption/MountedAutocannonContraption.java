@@ -39,6 +39,8 @@ import rbasamoyai.createbigcannons.cannons.autocannon.*;
 import rbasamoyai.createbigcannons.config.CBCConfigs;
 import rbasamoyai.createbigcannons.munitions.autocannon.AbstractAutocannonProjectile;
 import rbasamoyai.createbigcannons.munitions.autocannon.AutocannonCartridgeItem;
+import rbasamoyai.createbigcannons.munitions.autocannon.subsonic.SubsonicAutocannonProjectile;
+import rbasamoyai.createbigcannons.munitions.autocannon.subsonic.SubsonicAutocannonRoundItem;
 import rbasamoyai.createbigcannons.network.CBCNetwork;
 import rbasamoyai.createbigcannons.network.ClientboundAnimateCannonContraptionPacket;
 
@@ -48,6 +50,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MountedAutocannonContraption extends AbstractMountedCannonContraption {
+	private List<StructureBlockInfo> cannonBlocks = new ArrayList<>();
 
 	private AutocannonMaterial cannonMaterial;
 	private BlockPos recoilSpringPos;
@@ -94,7 +97,6 @@ public class MountedAutocannonContraption extends AbstractMountedCannonContrapti
 
 		AutocannonMaterial material = startCannon.getAutocannonMaterial();
 
-		List<StructureBlockInfo> cannonBlocks = new ArrayList<>();
 		cannonBlocks.add(new StructureBlockInfo(pos, startState, this.getTileEntityNBT(level, pos)));
 
 		int cannonLength = 1;
@@ -237,14 +239,9 @@ public class MountedAutocannonContraption extends AbstractMountedCannonContrapti
 
 	@Override
 	public void fireShot(ServerLevel level, PitchOrientedContraptionEntity entity) {
-		if (this.startPos == null
-			|| this.cannonMaterial == null
-			|| !(this.presentTileEntities.get(this.startPos) instanceof AutocannonBreechBlockEntity breech)
-			|| !breech.canFire()) return;
-
+		if (this.startPos == null || this.cannonMaterial == null || !(this.presentTileEntities.get(this.startPos) instanceof AutocannonBreechBlockEntity breech) || !breech.canFire()) return;
 		ItemStack foundProjectile = breech.extractNextInput();
 		if (!(foundProjectile.getItem() instanceof AutocannonCartridgeItem round)) return;
-
 		Vec3 ejectPos = entity.toGlobalVector(Vec3.atCenterOf(this.startPos.relative(this.isHandle ? Direction.DOWN : this.initialOrientation.getOpposite())), 1.0f);
 		Vec3 centerPos = entity.toGlobalVector(Vec3.atCenterOf(BlockPos.ZERO), 1.0f);
 		ItemStack ejectStack = round.getEmptyCartridge(foundProjectile);
@@ -320,7 +317,15 @@ public class MountedAutocannonContraption extends AbstractMountedCannonContrapti
 			if (entity.getControllingPassenger() == player) continue;
 			level.sendParticles(player, new CannonPlumeParticleData(0.1f), true, particlePos.x, particlePos.y, particlePos.z, 0, vec1.x, vec1.y, vec1.z, 1.0f);
 		}
-		level.playSound(null, spawnPos.x, spawnPos.y, spawnPos.z, SoundEvents.GENERIC_EXPLODE, SoundSource.BLOCKS, 4.0f, 2.0f);
+		float pitch = 2F;
+		float volume = 4F;
+		if(projectile instanceof SubsonicAutocannonProjectile) volume -= 3.3F;
+		/*for(StructureBlockInfo b : cannonBlocks) if(get silencer) {
+			float redVol = volume - 3.3F;
+			volume = redVol < 0? 0 : redVol;
+			break;
+		}*/
+		level.playSound(null, spawnPos.x, spawnPos.y, spawnPos.z, SoundEvents.GENERIC_EXPLODE, SoundSource.BLOCKS, volume, pitch);
 	}
 
 	@Override

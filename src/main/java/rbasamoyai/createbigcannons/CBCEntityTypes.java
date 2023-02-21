@@ -11,6 +11,9 @@ import rbasamoyai.createbigcannons.cannon_control.contraption.PitchOrientedContr
 import rbasamoyai.createbigcannons.cannon_control.carriage.CannonCarriageEntity;
 import rbasamoyai.createbigcannons.cannon_control.carriage.CannonCarriageRenderer;
 import rbasamoyai.createbigcannons.munitions.AbstractCannonProjectile;
+import rbasamoyai.createbigcannons.munitions.autocannon.hollowpt.HPAutocannonProjectile;
+import rbasamoyai.createbigcannons.munitions.autocannon.subsonic.SubsonicAutocannonProjectile;
+import rbasamoyai.createbigcannons.munitions.autocannon.tracer.TracerAutocannonProjectile;
 import rbasamoyai.createbigcannons.munitions.big_cannon.AbstractBigCannonProjectile;
 import rbasamoyai.createbigcannons.munitions.big_cannon.BigCannonProjectileRenderer;
 import rbasamoyai.createbigcannons.munitions.big_cannon.ap_shell.APShellProjectile;
@@ -89,7 +92,9 @@ public class CBCEntityTypes {
 			.register();
     public static final EntityEntry<APAutocannonProjectile> AP_AUTOCANNON = autocannonProjectile("ap_autocannon", APAutocannonProjectile::new, "Armor Piercing (AP) Autocannon Round");
 	public static final EntityEntry<FlakAutocannonProjectile> FLAK_AUTOCANNON = autocannonProjectile("flak_autocannon", FlakAutocannonProjectile::new, "Flak Autocannon Round");
-
+	public static final EntityEntry<TracerAutocannonProjectile> TRACER_AUTOCANNON = autocannonProjectile("tracer_autocannon_projectile", TracerAutocannonProjectile::new);
+	public static final EntityEntry<SubsonicAutocannonProjectile> SUBSONIC_AUTOCANNON = autocannonProjectile("subsonic_autocannon_projectile", SubsonicAutocannonProjectile::new);
+	public static final EntityEntry<HPAutocannonProjectile> HP_AUTOCANNON = autocannonProjectile("hp_autocannon_projectile", HPAutocannonProjectile::new);
 
     private static <T extends AbstractBigCannonProjectile> EntityEntry<T> cannonProjectile(String id, EntityFactory<T> factory) {
 		return REGISTRATE

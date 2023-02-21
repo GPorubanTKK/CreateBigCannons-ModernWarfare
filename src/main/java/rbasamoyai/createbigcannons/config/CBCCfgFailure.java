@@ -4,7 +4,7 @@ import com.simibubi.create.foundation.config.ConfigBase;
 
 public class CBCCfgFailure extends ConfigBase {
 
-	public final ConfigBool disableAllFailure = b(false, "disableAllCannonFailure", Comments.disableAllFailure);
+	public final ConfigBool disableAllFailure = b(true, "disableAllCannonFailure", Comments.disableAllFailure);
 	public final ConfigFloat squibChance = f(0.25f, 0.0f, 1.0f, "squibChance", Comments.squibChance);
 	public final ConfigFloat barrelChargeBurstChance = f(0.2f, 0.0f, 1.0f, "barrelChargeBurstChance", Comments.barrelChargeBurstChance);
 	public final ConfigFloat failureExplosionPower = f(2, 0, "failureExplosionPower", Comments.failureExplosionPower);

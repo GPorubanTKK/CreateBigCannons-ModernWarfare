@@ -57,7 +57,7 @@ public class AutocannonBreechBlockEntity extends AutocannonBlockEntity implement
 
 	public IItemHandler createItemHandler() { return new BreechItemHandler(this); }
 
-	public int getQueueLimit() { return 5; }
+	public int getQueueLimit() { return 1; }
 
 	@Override
 	public void tick() {
