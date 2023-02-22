@@ -163,7 +163,7 @@ public class CBCBlockEntities {
 
 	public static final BlockEntityEntry<AutocannonBlockEntity> AUTOCANNON = REGISTRATE
 			.tileEntity("autocannon", AutocannonBlockEntity::new)
-			.validBlocks(CBCBlocks.CAST_IRON_AUTOCANNON_BARREL, CBCBlocks.BRONZE_AUTOCANNON_BARREL, CBCBlocks.STEEL_AUTOCANNON_BARREL)
+			.validBlocks(CBCBlocks.CAST_IRON_AUTOCANNON_BARREL, CBCBlocks.BRONZE_AUTOCANNON_BARREL, CBCBlocks.STEEL_AUTOCANNON_BARREL, CBCBlocks.SILENCER)
 			.register();
 
 	public static final BlockEntityEntry<AutocannonBreechBlockEntity> AUTOCANNON_BREECH = REGISTRATE

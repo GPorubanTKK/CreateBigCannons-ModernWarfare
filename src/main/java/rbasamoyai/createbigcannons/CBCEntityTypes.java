@@ -3,14 +3,17 @@ package rbasamoyai.createbigcannons;
 import com.simibubi.create.content.contraptions.components.structureMovement.AbstractContraptionEntity;
 import com.simibubi.create.content.contraptions.components.structureMovement.OrientedContraptionEntityRenderer;
 import com.tterrag.registrate.util.entry.EntityEntry;
-
 import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.minecraft.world.entity.EntityType.EntityFactory;
 import net.minecraft.world.entity.MobCategory;
-import rbasamoyai.createbigcannons.cannon_control.contraption.PitchOrientedContraptionEntity;
 import rbasamoyai.createbigcannons.cannon_control.carriage.CannonCarriageEntity;
 import rbasamoyai.createbigcannons.cannon_control.carriage.CannonCarriageRenderer;
+import rbasamoyai.createbigcannons.cannon_control.contraption.PitchOrientedContraptionEntity;
 import rbasamoyai.createbigcannons.munitions.AbstractCannonProjectile;
+import rbasamoyai.createbigcannons.munitions.autocannon.AbstractAutocannonProjectile;
+import rbasamoyai.createbigcannons.munitions.autocannon.AutocannonProjectileRenderer;
+import rbasamoyai.createbigcannons.munitions.autocannon.ap_round.APAutocannonProjectile;
+import rbasamoyai.createbigcannons.munitions.autocannon.flak.FlakAutocannonProjectile;
 import rbasamoyai.createbigcannons.munitions.autocannon.fmj.FMJAutocannonProjectile;
 import rbasamoyai.createbigcannons.munitions.autocannon.hollowpt.HPAutocannonProjectile;
 import rbasamoyai.createbigcannons.munitions.autocannon.incendiary.IncendiaryAutocannonProjectile;
@@ -19,10 +22,6 @@ import rbasamoyai.createbigcannons.munitions.autocannon.tracer.TracerAutocannonP
 import rbasamoyai.createbigcannons.munitions.big_cannon.AbstractBigCannonProjectile;
 import rbasamoyai.createbigcannons.munitions.big_cannon.BigCannonProjectileRenderer;
 import rbasamoyai.createbigcannons.munitions.big_cannon.ap_shell.APShellProjectile;
-import rbasamoyai.createbigcannons.munitions.autocannon.AbstractAutocannonProjectile;
-import rbasamoyai.createbigcannons.munitions.autocannon.AutocannonProjectileRenderer;
-import rbasamoyai.createbigcannons.munitions.autocannon.ap_round.APAutocannonProjectile;
-import rbasamoyai.createbigcannons.munitions.autocannon.flak.FlakAutocannonProjectile;
 import rbasamoyai.createbigcannons.munitions.big_cannon.ap_shot.APShotProjectile;
 import rbasamoyai.createbigcannons.munitions.big_cannon.chlorine.GasProjectile;
 import rbasamoyai.createbigcannons.munitions.big_cannon.fluid_shell.FluidBlob;
@@ -32,13 +31,13 @@ import rbasamoyai.createbigcannons.munitions.big_cannon.grapeshot.GrapeshotCanno
 import rbasamoyai.createbigcannons.munitions.big_cannon.grapeshot.GrapeshotRenderer;
 import rbasamoyai.createbigcannons.munitions.big_cannon.he_shell.HEShellProjectile;
 import rbasamoyai.createbigcannons.munitions.big_cannon.mortar_stone.MortarStoneProjectile;
-import rbasamoyai.createbigcannons.munitions.big_cannon.smoke.SmokeShellProjectile;
-import rbasamoyai.createbigcannons.munitions.big_cannon.solid_shot.SolidShotProjectile;
+import rbasamoyai.createbigcannons.munitions.big_cannon.nuke.NukeProjectile;
 import rbasamoyai.createbigcannons.munitions.big_cannon.shrapnel.Shrapnel;
 import rbasamoyai.createbigcannons.munitions.big_cannon.shrapnel.ShrapnelRenderer;
 import rbasamoyai.createbigcannons.munitions.big_cannon.shrapnel.ShrapnelShellProjectile;
+import rbasamoyai.createbigcannons.munitions.big_cannon.smoke.SmokeShellProjectile;
+import rbasamoyai.createbigcannons.munitions.big_cannon.solid_shot.SolidShotProjectile;
 import rbasamoyai.createbigcannons.munitions.big_cannon.traffic_cone.TrafficConeProjectile;
-import rbasamoyai.createbigcannons.munitions.big_cannon.nuke.NukeProjectile;
 import rbasamoyai.createbigcannons.munitions.big_cannon.white_phosphorous.WPProjectile;
 
 import static rbasamoyai.createbigcannons.CreateBigCannons.REGISTRATE;
@@ -68,7 +67,7 @@ public class CBCEntityTypes {
 	public static final EntityEntry<APShellProjectile> AP_SHELL = cannonProjectile("ap_shell", APShellProjectile::new, "Armor Piercing (AP) Shell");
 	public static final EntityEntry<FluidShellProjectile> FLUID_SHELL = cannonProjectile("fluid_shell", FluidShellProjectile::new);
 	public static final EntityEntry<MortarStoneProjectile> MORTAR_STONE = cannonProjectile("mortar_stone", MortarStoneProjectile::new);
-	
+
 	public static final EntityEntry<Shrapnel> SHRAPNEL = REGISTRATE
 			.entity("shrapnel", Shrapnel::new, MobCategory.MISC)
 			.properties(Shrapnel::build)
@@ -132,7 +131,7 @@ public class CBCEntityTypes {
 				.lang(enUSdiffLang)
 				.register();
 	}
-	
+
 	public static void register() {}
 	
 }

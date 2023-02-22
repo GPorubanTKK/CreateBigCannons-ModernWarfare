@@ -18,8 +18,8 @@ public class HPAutocannonProjectile extends AbstractAutocannonProjectile {
         setProjectileMass(12);
         damage += 6;
     }
-    @Override public void onHitBlock(@NotNull BlockHitResult result) {}
-    @Override public void onDestroyBlock(BlockState state, BlockHitResult bhr){}
+    @Override public void onHitBlock(@NotNull BlockHitResult result) {discard();}
+    @Override public void onDestroyBlock(BlockState state, BlockHitResult bhr){discard();}
     @Override public void onHitEntity(@NotNull EntityHitResult result) {
         if(!level.isClientSide) ((LivingEntity)result.getEntity()).addEffect(new MobEffectInstance(MobEffects.WITHER, 12, 2));
     }

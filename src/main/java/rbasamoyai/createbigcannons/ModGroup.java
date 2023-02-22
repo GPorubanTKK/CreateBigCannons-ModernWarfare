@@ -5,6 +5,7 @@ import java.util.Arrays;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
 import rbasamoyai.createbigcannons.munitions.fuzes.ProximityFuzeItem;
 import rbasamoyai.createbigcannons.munitions.fuzes.TimedFuzeItem;
 
@@ -12,8 +13,8 @@ public class ModGroup {
 	
 	public static final CreativeModeTab GROUP = new CreativeModeTab(CreateBigCannons.MOD_ID) {
 		@Override
-		public ItemStack makeIcon() {
-			return CBCBlocks.SOLID_SHOT.asStack();
+		public @NotNull ItemStack makeIcon() {
+			return CBCBlocks.NUKE.asStack();
 		}
 		
 		@Override
@@ -167,19 +168,25 @@ public class ModGroup {
 				CBCBlocks.STEEL_AUTOCANNON_RECOIL_SPRING.asStack(),
 				CBCBlocks.STEEL_AUTOCANNON_BARREL.asStack(),
 
+				CBCBlocks.SILENCER.asStack(),
+
 				CBCItems.AUTOCANNON_CARTRIDGE_SHEET.asStack(),
 				CBCItems.EMPTY_AUTOCANNON_CARTRIDGE.asStack(),
 				CBCItems.FILLED_AUTOCANNON_CARTRIDGE.asStack(),
-				CBCItems.AP_AUTOCANNON_ROUND.get().getCreativeTabCartridgeItem(),
 				CBCItems.AP_AUTOCANNON_ROUND.asStack(),
-				CBCItems.FLAK_AUTOCANNON_ROUND.get().getCreativeTabCartridgeItem(),
 				CBCItems.FLAK_AUTOCANNON_ROUND.asStack(),
 				CBCItems.TRACER_AUTOCANNON_ROUND.asStack(),
-				CBCItems.TRACER_AUTOCANNON_ROUND.get().getCreativeTabCartridgeItem(),
 				CBCItems.SUBSONIC_AUTOCANNON_ROUND.asStack(),
-				CBCItems.SUBSONIC_AUTOCANNON_ROUND.get().getCreativeTabCartridgeItem(),
 				CBCItems.HP_AUTOCANNON_ROUND.asStack(),
+				CBCItems.FMJ_ROUND.asStack(),
+				CBCItems.INCENDIARY_ROUND.asStack(),
+				CBCItems.INCENDIARY_ROUND.get().getCreativeTabCartridgeItem(),
+				CBCItems.FMJ_ROUND.get().getCreativeTabCartridgeItem(),
 				CBCItems.HP_AUTOCANNON_ROUND.get().getCreativeTabCartridgeItem(),
+				CBCItems.TRACER_AUTOCANNON_ROUND.get().getCreativeTabCartridgeItem(),
+				CBCItems.SUBSONIC_AUTOCANNON_ROUND.get().getCreativeTabCartridgeItem(),
+				CBCItems.AP_AUTOCANNON_ROUND.get().getCreativeTabCartridgeItem(),
+				CBCItems.FLAK_AUTOCANNON_ROUND.get().getCreativeTabCartridgeItem(),
 
 				CBCItems.RECOIL_SPRING.asStack(),
 

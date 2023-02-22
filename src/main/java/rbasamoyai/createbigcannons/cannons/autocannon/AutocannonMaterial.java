@@ -23,6 +23,7 @@ public record AutocannonMaterial(ResourceLocation name, int maxLength, float wei
     public static final AutocannonMaterial
             CAST_IRON = register(CreateBigCannons.resource("cast_iron"), 3, 1.5f),
             BRONZE = register(CreateBigCannons.resource("bronze"), 5, 1.0f),
-            STEEL = register(CreateBigCannons.resource("steel"), 7, 2.5f);
+            STEEL = register(CreateBigCannons.resource("steel"), 7, 2.5f),
+            SILENCER = register(CreateBigCannons.resource("silencer"), 5, 1f);
 
 }

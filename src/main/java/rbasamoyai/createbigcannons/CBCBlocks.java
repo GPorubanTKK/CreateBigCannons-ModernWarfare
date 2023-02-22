@@ -711,6 +711,13 @@ public class CBCBlocks {
 			.transform(CBCBuilderTransformers.autocannonRecoilSpring("autocannon/steel", true))
 			.register();
 
+	public static final BlockEntry<Silencer> SILENCER = REGISTRATE
+			.block("silencer", Silencer::new)
+			.transform(cannonBlock())
+			.loot(CBCBuilderTransformers.steelScrapLoot(4))
+			.transform(CBCBuilderTransformers.autocannonBarrel(""))
+			.register();
+
 	public static final BlockEntry<IncompleteAutocannonBlock> INCOMPLETE_STEEL_AUTOCANNON_RECOIL_SPRING = REGISTRATE
 			.block("incomplete_steel_autocannon_recoil_spring", p ->
 					IncompleteAutocannonBlock.recoilSpring(p, AutocannonMaterial.STEEL, STEEL_AUTOCANNON_RECOIL_SPRING, CBCItems.RECOIL_SPRING))

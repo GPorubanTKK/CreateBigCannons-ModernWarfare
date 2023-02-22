@@ -29,6 +29,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.network.PacketDistributor;
+import org.jline.utils.Log;
 import rbasamoyai.createbigcannons.CBCBlocks;
 import rbasamoyai.createbigcannons.CBCContraptionTypes;
 import rbasamoyai.createbigcannons.CreateBigCannons;
@@ -50,11 +51,10 @@ import java.util.List;
 import java.util.Map;
 
 public class MountedAutocannonContraption extends AbstractMountedCannonContraption {
-	private List<StructureBlockInfo> cannonBlocks = new ArrayList<>();
-
 	private AutocannonMaterial cannonMaterial;
 	private BlockPos recoilSpringPos;
 	private boolean isHandle = false;
+	private int silencers = 0;
 
 	@Override
 	public float maximumDepression(ControlPitchContraption controller) {
@@ -86,33 +86,28 @@ public class MountedAutocannonContraption extends AbstractMountedCannonContrapti
 	}
 
 	private boolean collectCannonBlocks(Level level, BlockPos pos) throws AssemblyException {
+		System.out.println("\nRUNNING collectCannonBlocks()\n");
 		BlockState startState = level.getBlockState(pos);
-
-		if (!(startState.getBlock() instanceof AutocannonBlock startCannon)) {
-			return false;
-		}
+		if (!(startState.getBlock() instanceof AutocannonBlock startCannon)) { System.out.println("\n" + startState.getBlock().getName().getString() + "\n"); return false; }
 		if (!startCannon.isComplete(startState)) {
 			throw hasIncompleteCannonBlocks(pos);
 		}
 
 		AutocannonMaterial material = startCannon.getAutocannonMaterial();
 
+		List<StructureBlockInfo> cannonBlocks = new ArrayList<>();
 		cannonBlocks.add(new StructureBlockInfo(pos, startState, this.getTileEntityNBT(level, pos)));
-
 		int cannonLength = 1;
-
 		Direction cannonFacing = startCannon.getFacing(startState);
-
 		Direction positive = Direction.get(Direction.AxisDirection.POSITIVE, cannonFacing.getAxis());
 		Direction negative = positive.getOpposite();
-
 		BlockPos start = pos;
 		BlockState nextState = level.getBlockState(pos.relative(positive));
 		boolean positiveBreech = false;
 
 		while (nextState.getBlock() instanceof AutocannonBlock cBlock && this.isConnectedToCannon(level, nextState, start.relative(positive), positive, material)) {
 			start = start.relative(positive);
-			if (!cBlock.isComplete(nextState)) throw hasIncompleteCannonBlocks(start);
+			if(!cBlock.isComplete(nextState)) throw hasIncompleteCannonBlocks(start);
 			cannonBlocks.add(new StructureBlockInfo(start, nextState, this.getTileEntityNBT(level, start)));
 			cannonLength++;
 			positiveBreech = cBlock.isBreechMechanism(nextState);
@@ -120,22 +115,27 @@ public class MountedAutocannonContraption extends AbstractMountedCannonContrapti
 			if (cannonLength > getMaxCannonLength()) throw cannonTooLarge();
 			if (positiveBreech) break;
 		}
+
 		BlockPos positiveEndPos = positiveBreech ? start : start.relative(negative);
 
 		start = pos;
 		nextState = level.getBlockState(pos.relative(negative));
 
 		boolean negativeBreech = false;
-		while (nextState.getBlock() instanceof AutocannonBlock cBlock && this.isConnectedToCannon(level, nextState, start.relative(negative), negative, material)) {
+		while (nextState.getBlock() instanceof AutocannonBlock cBlock && this.isConnectedToCannon(level, nextState, start.relative(negative), negative, material)) { //this loop counts barrels
 			start = start.relative(negative);
 			if (!cBlock.isComplete(nextState)) throw hasIncompleteCannonBlocks(start);
 			cannonBlocks.add(new StructureBlockInfo(start, nextState, this.getTileEntityNBT(level, start)));
+			System.out.println("\ncBlockType: " + cBlock.getClass().getSimpleName() + "\n");
 			cannonLength++;
 			negativeBreech = cBlock.isBreechMechanism(nextState);
 			nextState = level.getBlockState(start.relative(negative));
 			if (cannonLength > getMaxCannonLength()) throw cannonTooLarge();
 			if (negativeBreech) break;
 		}
+
+		System.out.println("\nNum of silencers: " + silencers + "\n");
+
 		BlockPos negativeEndPos = negativeBreech ? start : start.relative(positive);
 
 		if (positiveBreech && negativeBreech) throw invalidCannon();
@@ -196,7 +196,7 @@ public class MountedAutocannonContraption extends AbstractMountedCannonContrapti
 
 	private boolean isConnectedToCannon(LevelAccessor level, BlockState state, BlockPos pos, Direction connection, AutocannonMaterial material) {
 		AutocannonBlock cBlock = (AutocannonBlock) state.getBlock();
-		if (cBlock.getAutocannonMaterialInLevel(level, state, pos) != material) return false;
+		if ((cBlock.getAutocannonMaterialInLevel(level, state, pos) != material) && material != AutocannonMaterial.SILENCER) return false;
 		return level.getBlockEntity(pos) instanceof IAutocannonBlockEntity cbe
 				&& level.getBlockEntity(pos.relative(connection.getOpposite())) instanceof IAutocannonBlockEntity cbe1
 				&& cbe.cannonBehavior().isConnectedTo(connection.getOpposite())
@@ -317,14 +317,9 @@ public class MountedAutocannonContraption extends AbstractMountedCannonContrapti
 			if (entity.getControllingPassenger() == player) continue;
 			level.sendParticles(player, new CannonPlumeParticleData(0.1f), true, particlePos.x, particlePos.y, particlePos.z, 0, vec1.x, vec1.y, vec1.z, 1.0f);
 		}
-		float pitch = 2F;
-		float volume = 4F;
-		if(projectile instanceof SubsonicAutocannonProjectile) volume -= 3.3F;
-		/*for(StructureBlockInfo b : cannonBlocks) if(get silencer) {
-			float redVol = volume - 3.3F;
-			volume = redVol < 0? 0 : redVol;
-			break;
-		}*/
+		float pitch = silencers > 0 ? 4F : 2F;
+		float volume = 4F - silencers - (projectile instanceof SubsonicAutocannonProjectile ? 3.2F : 0);
+		volume = volume <= 0 ? 0.2F : volume;
 		level.playSound(null, spawnPos.x, spawnPos.y, spawnPos.z, SoundEvents.GENERIC_EXPLODE, SoundSource.BLOCKS, volume, pitch);
 	}
 

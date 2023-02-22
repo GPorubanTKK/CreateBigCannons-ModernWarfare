@@ -3,7 +3,6 @@ package rbasamoyai.createbigcannons;
 import com.simibubi.create.content.AllSections;
 import com.simibubi.create.content.contraptions.itemAssembly.SequencedAssemblyItem;
 import com.tterrag.registrate.util.entry.ItemEntry;
-
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import rbasamoyai.createbigcannons.crafting.CannonCraftingWandItem;
@@ -22,6 +21,7 @@ import rbasamoyai.createbigcannons.munitions.config.InspectResistanceToolItem;
 import rbasamoyai.createbigcannons.munitions.fuzes.ImpactFuzeItem;
 import rbasamoyai.createbigcannons.munitions.fuzes.ProximityFuzeItem;
 import rbasamoyai.createbigcannons.munitions.fuzes.TimedFuzeItem;
+
 import static rbasamoyai.createbigcannons.CreateBigCannons.REGISTRATE;
 
 public class CBCItems {
