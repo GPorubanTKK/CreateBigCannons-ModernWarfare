@@ -11,4 +11,6 @@ public class Silencer extends AutocannonBarrelBlock {
     }
 
     @Override public boolean isFlammable(BlockState s, BlockGetter g, BlockPos p, Direction d) { return false; }
+
+    @Override public Class<AutocannonBlockEntity> getTileEntityClass() { return AutocannonBlockEntity.class; }
 }

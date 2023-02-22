@@ -713,7 +713,7 @@ public class CBCBlocks {
 
 	public static final BlockEntry<Silencer> SILENCER = REGISTRATE
 			.block("silencer", Silencer::new)
-			.transform(cannonBlock())
+			.transform(cannonBlock(false))
 			.loot(CBCBuilderTransformers.steelScrapLoot(4))
 			.transform(CBCBuilderTransformers.autocannonBarrel(""))
 			.register();
